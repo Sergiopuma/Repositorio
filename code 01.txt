@@ -1,0 +1,6 @@
+n = int(input("Número de degraus: "))
+for i in range(0,n):
+    if i == n-1:
+        print(str("*"*n))
+    else:
+        print(str(" "((n-1)(n-1-i)) + str("*" * (i+1))))

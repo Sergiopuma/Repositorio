@@ -1,0 +1,19 @@
+def anagramas(palavra):
+    if len(palavra) <=1:
+        return palavra
+    else:
+        tmp = []
+        for aux in anagramas(palavra[1:]):
+            for i in range(len(palavra)):
+                tmp.append(aux[:i] + palavra[0:1] + aux[i:])
+        return tmp
+tmp= anagramas('OVO')
+
+tmp2 = []
+tmp3 = [[]]
+
+for i, item in enumerate(tmp):
+    tmp2.append(f'{item}, {tmp[len(tmp) - (i + 1)]}')
+    tmp3.append([tmp2[i]])
+tmp3.remove(tmp3[0])
+print(tmp3)

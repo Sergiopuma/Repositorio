@@ -1,0 +1,49 @@
+import re
+
+senha = input("Você precisa criar uma senha forte com: \n"
+              "no mínimo 6 caracteres;\n"
+              "no mínimo 1 digito;\n"
+              "no mínimo 1 letra em minúsculo;\n"
+              "no mínimo 1 letra em maiúsculo;\n"
+              "no mínimo 1 caractere especial entre: !@#$%^&*()-+)\n"
+              "Digite sua senha: ")
+
+
+valor = 0
+while True:
+    if senha == "":
+        valor = -1
+        break
+
+    elif (len(senha) < 6):
+        novosCaracteres = input("Digite novos caracteres para adicionar à sua senha: ")
+        novasenha = senha + novosCaracteres
+
+        if (len(novasenha) < 6):
+            valor = -1
+            break
+        else:
+            senha=novasenha
+
+    elif not re.search("[a-z]", senha):
+        valor = -1
+        break
+    elif not re.search("[A-Z]", senha):
+        valor = -1
+        break
+    elif not re.search("[0-9]", senha):
+        valor = -1
+        break
+    elif not re.search("[!@#$%^&*()-+]", senha):
+        valor = -1
+        break
+    elif re.search("\s", senha):
+        valor = -1
+        break
+    else:
+        valor = 0
+        print("Sua senha é válida")
+        break
+
+if valor == -1:
+    print("Sua senha não é válida")
